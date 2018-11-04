@@ -1,4 +1,4 @@
-#Lab Report
+# Lab Report
 > 161250174 许元武
 ## Motivation/Aim
 在第三章，我们学习了如何进行词法分析。为了巩固所学的内容，进行本次实验来自己实现一个词法分析器生成程序。
@@ -12,7 +12,8 @@
 * 输出文件(output.txt)
 * 实验报告(本文件)
 ## Ideas/Methods
-**注意：本次实验采用要求中的第二种方法，即编写词法分析器的生成程序来生成一个词法分析器**
+**注意：本次实验采用要求中的第二种方法，即编写词法分析器的生成程序来生成一个词法分析器**     
+
 * 算法步骤
     + 读入.l文件中的正则表达式
     + 对这些正则表达式进行预处理
@@ -24,9 +25,9 @@
     + 根据简化后的DFA生成parser代码
 * 检验步骤
     + 编译运行main.cpp，生成parser.cpp
-        - 运行main.cpp时，请将cpp.template和可执行文件放在一起
+        * 运行main.cpp时，请将cpp.template和可执行文件放在一起
     + 编译运行生成的parser.cpp
-        - 运行生成的parser.cpp时，请将input.txt(字符流文件)和可执行文件放在一起
+        * 运行生成的parser.cpp时，请将input.txt(字符流文件)和可执行文件放在一起
     + 查看输出文件(output.txt)
 
 ## Assumptions
@@ -38,8 +39,11 @@
 * 识别的字符集中没有空格
 ## Related FA descriptions
 * 单个正则表达式对应的NFA(见my.l中的正则表达式)
+    + 例如：`id ({letter}|_)({letter}|{digit}|_)*`
 * 多个NFA合并的大NFA，可识别多个正则表达式
+    + 新建一个开始节点，用epsilon边连接该节点和各个NFA的开始节点，**结束状态并不合并**
 * 由上述大NFA转化而来的DFA
+    + 使用 子集构造+epsilon闭包
 
 ## Description of important Data Structures
 NFA|DFA的定义如下：
@@ -65,9 +69,11 @@ class FA {
      int endNode;
  };
  ```
+ 
  由于DFA之于NFA仅多了两个限制条件：不能有epsilon边；同一条边只能指向一个目标节点
  而我采用`map<int,vecter<edge>>`的结构来存储边，绕过了这两个条件，所以可以用`FA`来同时代表NFA和DFA  
  `edge`的结构如下：
+ 
  ```
 struct edge{
     char value;
@@ -87,7 +93,8 @@ struct edge{
 * 将NFA变为DFA的 子集构造+epsilon闭包法
 * DFA化简：比较节点的出边情况和可接受的正则表达式(如果有的话)
 ## Use cases on running
-参见以下文件
+参见以下文件  
+
 * /src
     + my.l
 * /out
