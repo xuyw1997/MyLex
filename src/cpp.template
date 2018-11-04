@@ -1,0 +1,23 @@
+//
+// Created by Logan Xu on 2018/11/3.
+//
+#include <cstdio>
+#include <iostream>
+#include <string>
+using namespace std;
+
+int state = 0;
+int main(){
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
+    char cur;
+    string lexeme;
+    while((cur=cin.get())!=EOF){
+        //ignore blank
+        switch (state){
+$
+            default:
+                break;
+        }
+    }
+}

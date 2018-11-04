@@ -1,0 +1,11 @@
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int a = 13 + 14;
+    string s = "12345";
+    int b = 33&44;
+    double c = 5;
+    cout << "Hello, world";
+}
